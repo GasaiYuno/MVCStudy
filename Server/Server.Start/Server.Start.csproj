@@ -6,4 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Server.ConfigSetting\Server.ConfigSetting.csproj" />
+    <ProjectReference Include="..\Server.EFCoreContext\Server.EFCoreContext.csproj" />
+    <ProjectReference Include="..\Server.EFCore\Server.EFCore.csproj" />
+    <ProjectReference Include="..\Server.IConfigSetting\Server.IConfigSetting.csproj" />
+    <ProjectReference Include="..\Server.IEFCoreContext\Server.IEFCoreContext.csproj" />
+    <ProjectReference Include="..\Server.IService\Server.IService.csproj" />
+    <ProjectReference Include="..\Server.Models\Server.Models.csproj" />
+    <ProjectReference Include="..\Server.Service\Server.Service.csproj" />
+  </ItemGroup>
+
 </Project>

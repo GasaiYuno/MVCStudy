@@ -11,7 +11,7 @@ namespace Server.ConfigSetting
         {
             var builder = new ConfigurationBuilder().
                         SetBasePath(Directory.GetCurrentDirectory()).
-                        AddJsonFile("appsetting.json");
+                        AddJsonFile("appsettings.json");
             configurationRoot = builder.Build();
         }
 

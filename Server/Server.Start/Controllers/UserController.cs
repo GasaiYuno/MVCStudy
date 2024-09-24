@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Server.IService;
+using Server.Models;
 
 namespace Server.Start.Controllers
 {
@@ -6,6 +8,12 @@ namespace Server.Start.Controllers
     [ApiController]
     public class UserController : Controller
     {
+        ILoginService _loginService;
+        public UserController(ILoginService loginService) {
+            _loginService = loginService;
+        }
+
+
         [HttpGet]
         [Route("login")]
         public string Login()
@@ -15,9 +23,18 @@ namespace Server.Start.Controllers
 
         [HttpPost]
         [Route("login")]
-        public string Login([FromForm]string userName, [FromForm]string password)
+        public ActionResult Login([FromForm]string userName, [FromForm]string password)
         {
-            return "Login in Post";
+            var user = _loginService.Query<SysUserInfo>(t => t.UserName == userName && t.Password == password);
+
+            if (user?.Count() > 0)
+            {
+                return Ok("成功登录");
+            }
+            else
+            {
+                return NoContent();
+            }
         }
     }
 }

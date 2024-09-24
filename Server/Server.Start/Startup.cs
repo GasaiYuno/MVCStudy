@@ -1,5 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using Server.EFCore;
+using Server.EFCoreContext;
+using Server.IEFCoreContext;
+using Server.IService;
+using Server.Service;
 
 namespace Server.Start
 {
@@ -16,9 +21,9 @@ namespace Server.Start
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddSingleton<IUtils, Utils>();
-            //services.AddTransient<IConfiguration.IConfiguration, Configuration.Configuration>();
-            //services.AddTransient<IEFContext.IEFContext, EFContext.EFContext>();
-            //services.AddTransient<ILoginService, LoginService>();
+            services.AddTransient<IConfigSetting.IConfigSet, ConfigSetting.ConfigSet>();
+            services.AddTransient<IEFContext, EFContext>();
+            services.AddTransient<ILoginService, LoginService>();
             //services.AddTransient<IMenuService, MenuService>();
             //services.AddTransient<IUserService, UserService>();
 
