@@ -8,7 +8,7 @@ namespace Server.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("_id")]
+        [Column("user_id")]
         public int Id { get; set; }
         [Column("user_name")]
         public string UserName { get; set; }

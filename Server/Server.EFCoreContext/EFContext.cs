@@ -12,7 +12,7 @@ namespace Server.EFCoreContext
         }
         public EFCore.EFCoreContext DbConnet()
         {
-            return new EFCore.EFCoreContext(_configset.Read("DBConnectStr"));
+            return new EFCore.EFCoreContext(_configset.Read("DBName"));
         }
     }
 }

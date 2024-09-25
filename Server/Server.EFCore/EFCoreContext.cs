@@ -14,7 +14,8 @@ namespace Server.EFCore
 
         public EFCoreContext(string sqlcon)
         {
-            this._sqlcon = sqlcon;
+            string dir = AppContext.BaseDirectory + sqlcon;
+            this._sqlcon = "Data Source=" + dir;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
