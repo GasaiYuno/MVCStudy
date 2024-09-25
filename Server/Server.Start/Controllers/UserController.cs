@@ -25,11 +25,13 @@ namespace Server.Start.Controllers
         [Route("login")]
         public ActionResult Login([FromForm]string userName, [FromForm]string password)
         {
-            var user = _loginService.Query<SysUserInfo>(t => t.UserName == userName && t.Password == password);
+            var users = _loginService.Query<SysUserInfo>(t => t.UserName == userName && t.Password == password);
 
-            if (user?.Count() > 0)
+            if (users?.Count() > 0)
             {
-                return Ok("成功登录");
+                var userInfo = users.ToList();
+                SysUserInfo sysUserInfo = userInfo[0];
+                return Ok(sysUserInfo);
             }
             else
             {
@@ -63,7 +65,7 @@ namespace Server.Start.Controllers
                 {
                     user.First().Password= password;
                     _loginService.Update<SysUserInfo>(user);
-                    return Ok("修改完成");
+                    return Ok(user.First());
                 }
                 else
                 {
